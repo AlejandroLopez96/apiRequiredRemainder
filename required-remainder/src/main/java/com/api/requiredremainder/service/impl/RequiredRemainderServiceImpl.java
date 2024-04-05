@@ -16,8 +16,13 @@ public class RequiredRemainderServiceImpl implements RequiredRemainderService {
 		Integer result = null;
 		
 		try {
-            
-			result = 10;
+
+			Integer w = (n - y) % x;
+
+			if (n - w < 0) {
+				result = n - w + n;
+			} else 
+				result = n - w;
 			
 		} catch (Exception e) {
 			log.error("There is an Exception in RequiredRemainderService.calculate: {}", e.getMessage());
