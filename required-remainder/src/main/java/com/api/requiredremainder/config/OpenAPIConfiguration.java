@@ -19,9 +19,8 @@ public class OpenAPIConfiguration {
     @Autowired
     private Environment env;
 
-   @Bean
-   public OpenAPI defineOpenApi() {
-
+    @Bean
+    public OpenAPI defineOpenApi() {
         Server server = new Server();
         server.setUrl(this.env.getProperty("environment.url"));
         server.setDescription(this.env.getProperty("environment.description"));
@@ -31,5 +30,5 @@ public class OpenAPIConfiguration {
                 .version(RequiredRemainderConstants.OPEN_API_INFO_VERSION)
                 .description(RequiredRemainderConstants.OPEN_API_INFO_DESCRIPTION);
         return new OpenAPI().info(information).servers(List.of(server));
-   }
+    }
 }
