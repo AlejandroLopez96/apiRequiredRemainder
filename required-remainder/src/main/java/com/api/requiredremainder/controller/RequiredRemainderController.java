@@ -7,21 +7,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.requiredremainder.model.RequiredRemainderBody;
+import com.api.requiredremainder.utils.constants.RequiredRemainderConstants;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/required-remainder")
+@RequestMapping(RequiredRemainderConstants.PATH_REQUIRED_REMAINDER_CONTROLLER)
 public interface RequiredRemainderController {
 
-    @GetMapping("/calculate")
+    @GetMapping(RequiredRemainderConstants.PATH_CALCULATE)
     public ResponseEntity<Integer> getRequiredRemainder(@RequestParam Integer x,
                                                         @RequestParam Integer y,
                                                         @RequestParam Integer n);
 
-    @PostMapping("/calculate")
+    @PostMapping(RequiredRemainderConstants.PATH_CALCULATE)
     public ResponseEntity<Integer> postRequiredRemainder(@RequestBody RequiredRemainderBody body);
     
 }
