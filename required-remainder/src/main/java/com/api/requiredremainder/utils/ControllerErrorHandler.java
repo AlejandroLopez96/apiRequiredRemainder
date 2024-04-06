@@ -1,4 +1,4 @@
-package com.api.requiredremainder.controller;
+package com.api.requiredremainder.utils;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -11,10 +11,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.api.requiredremainder.utils.ApiErrorHandler;
-
 @RestControllerAdvice
-public class ControllerHandler extends ResponseEntityExceptionHandler{
+public class ControllerErrorHandler extends ResponseEntityExceptionHandler{
 
     @Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(

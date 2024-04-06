@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.requiredremainder.controller.RequiredRemainderController;
 import com.api.requiredremainder.model.RequiredRemainderBody;
 import com.api.requiredremainder.service.RequiredRemainderService;
+import com.api.requiredremainder.utils.Utils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,16 +27,28 @@ public class RequiredRemainderControllerImpl implements RequiredRemainderControl
         try {
             result = this.requiredRemainderService.calculate(x, y, n);
 		} catch (Exception e) {
+            log.error("Error in RequiredRemainderController.getRequiredRemainder");
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
+        log.info("Finish RequiredRemainderController.getRequiredRemainder");
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Integer> postRequiredRemainder(RequiredRemainderBody body) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'postRequiredRemainder'");
+        log.info("Start RequiredRemainderController.postRequiredRemainder with bodyParam: {}", Utils.jsonMe(body));
+        Integer result = null;
+        
+        try {
+            result = this.requiredRemainderService.calculate(body.getX(), body.getY(), body.getN());
+		} catch (Exception e) {
+            log.error("Error in RequiredRemainderController.postRequiredRemainder");
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+        log.info("Finish RequiredRemainderController.postRequiredRemainder");
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }
