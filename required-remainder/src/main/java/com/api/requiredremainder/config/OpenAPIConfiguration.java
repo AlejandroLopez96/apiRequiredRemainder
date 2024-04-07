@@ -17,6 +17,8 @@ import io.swagger.v3.oas.models.servers.Server;
 public class OpenAPIConfiguration {
 
     @Autowired
+    //	If we have differents profiles of compilation this env variable gives us the chance to select values 
+    //	from application-{profile}.properties and the generic application.properties
     private Environment env;
 
     @Bean

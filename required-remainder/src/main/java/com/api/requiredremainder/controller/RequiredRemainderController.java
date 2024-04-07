@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.requiredremainder.model.RequiredRemainderBody;
 import com.api.requiredremainder.utils.constants.RequiredRemainderConstants;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,11 +27,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping(RequiredRemainderConstants.PATH_REQUIRED_REMAINDER_CONTROLLER)
 public interface RequiredRemainderController {
 
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", content = { @Content(mediaType = "application/json",
+                schema = @Schema(implementation = Integer.class)) }),
+        @ApiResponse(responseCode = "400", description = "Bad request",
+                content = @Content),
+        @ApiResponse(responseCode = "500", description = "Internal server error",
+                content = @Content)})
+    @Tag(name = "get", description = "GET methods of Required remainder APIs")
+    @Operation(summary = "Calculate required remainder from 3 params",
+       description = "Calculate required remainder from 3 request params (x, y, n). The response is an Integer.")
     @GetMapping(RequiredRemainderConstants.PATH_CALCULATE)
-    public ResponseEntity<Integer> getRequiredRemainder(@RequestParam Integer x,
-                                                        @RequestParam Integer y,
-                                                        @RequestParam Integer n);
+    public ResponseEntity<Integer> getRequiredRemainder(
+        @Parameter(
+        description = "Param 'x' to calculate required remainder",
+        required = true) @RequestParam Integer x,
+        @Parameter(
+        description = "Param 'y' to calculate required remainder",
+        required = true) @RequestParam Integer y,
+        @Parameter(
+        description = "Param 'n' to calculate required remainder",
+        required = true) @RequestParam Integer n);
 
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", content = { @Content(mediaType = "application/json",
+                schema = @Schema(implementation = Integer.class)) }),
+        @ApiResponse(responseCode = "400", description = "Bad request",
+                content = @Content),
+        @ApiResponse(responseCode = "500", description = "Internal server error",
+                content = @Content)})                                                    
+    @Tag(name = "post", description = "POST methods of Required remainder APIs")
+    @Operation(summary = "Calculate required remainder from Object (RequiredRemainderBody) with 3 fields",
+       description = "Calculate required remainder from request body that's a object (RequiredRemainderBody) which include 3 fields (x, y, n). The response is an Integer.")
     @PostMapping(RequiredRemainderConstants.PATH_CALCULATE)
     public ResponseEntity<Integer> postRequiredRemainder(@Valid @RequestBody RequiredRemainderBody body);
     

@@ -17,9 +17,12 @@ public class RequiredRemainderServiceImpl implements RequiredRemainderService {
 		
 		try {
 
+			// w is to get the difference from n to k
 			Integer w = (n - y) % x;
 
+			// This condition is to avoid negative values
 			if (n - w < 0) {
+				// Add n to have positive value
 				result = n - w + n;
 			} else 
 				result = n - w;
