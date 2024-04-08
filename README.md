@@ -13,8 +13,9 @@ BACKEND SIDE
  
 
 FRONTEND SIDE
-  - Start project with ng serve in console, you should have something like this at first because there is a simple authentication (admin/password):
-    ![image](https://github.com/AlejandroLopez96/requiredRemainderApp/assets/15210465/6ea31373-04b1-48e0-8ba7-2ca216400380)
+  - Start project with ng serve in console, you should have something like this at first because there is a simple authentication(admin/password):
+    
+    ![image](https://github.com/AlejandroLopez96/requiredRemainderApp/assets/15210465/eb051442-5078-4c51-903c-1b2586295e6e)
   - When the form is filled up, you will be redirected to:
     ![image](https://github.com/AlejandroLopez96/requiredRemainderApp/assets/15210465/5208f206-2f30-4316-b669-a93f54d0aa7b)
   - With response from backend:
