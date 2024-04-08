@@ -1,0 +1,32 @@
+<div class="page-content text-center mt-5">
+    <div class="form-group">
+        <div class="mb-3">
+            <label for="x" class="form-label me-3">X field</label>
+            <input type="number" id="x" [(ngModel)]="xField" required>
+        </div>
+        <div class="mb-3">
+            <label for="y" class="form-label me-3">Y field</label>
+            <input type="number" id="y" [(ngModel)]="yField" required>
+        </div>
+        <div class="mb-3">
+            <label for="n" class="form-label me-3">N field</label>
+            <input type="number" id="n" [(ngModel)]="nField" required>
+        </div>
+    </div>
+    @if (solutionRequiredRemainder) {
+        <div class="row mt-5">
+            <span>Result: {{solutionRequiredRemainder}}</span>
+        </div>
+    }
+    @if (errorList) {
+        @for (errorMessage of errorList; track $index) {
+            <div class="row mt-2 text-danger">
+                <span>{{errorMessage}}</span>
+            </div>
+        }
+    }
+    <div class="d-flex justify-content-evenly mt-5">
+        <button class="btn btn-primary" (click)="getCall()">GET call</button>
+        <button class="btn btn-primary" (click)="postCall()">POST call</button>
+    </div>
+</div>

@@ -33,8 +33,7 @@ public class ControllerErrorHandler extends ResponseEntityExceptionHandler{
     @ExceptionHandler({ MethodArgumentTypeMismatchException.class })
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(
     MethodArgumentTypeMismatchException ex, WebRequest request) {
-        String error = 
-        ex.getName() + " should be of type " + ex.getRequiredType().getName();
+        String error = ex.getName() + " should be a number";
 
         ApiErrorHandler apiError = 
         new ApiErrorHandler(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
