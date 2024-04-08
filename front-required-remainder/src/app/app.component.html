@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="page-header text-center mt-5">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="page-content text-center mt-5">
+    <div class="form-group">
+        <div class="mb-3">
+          <label for="x" class="form-label me-3">X field</label>
+          <input type="text" id="x" [(ngModel)]="xField" required>
+        </div>
+        <div class="mb-3">
+          <label for="y" class="form-label me-3">Y field</label>
+          <input type="text" id="y" [(ngModel)]="yField" required>
+        </div>
+        <div class="mb-3">
+          <label for="n" class="form-label me-3">N field</label>
+          <input type="text" id="n" [(ngModel)]="nField" required>
+        </div>
+    </div>
+    @if (solutionRequiredRemainder) {
+      <div class="row mt-5" if>
+        <span>Result: {{solutionRequiredRemainder}}</span>
+      </div>
+    }
+    <div class="row mt-5">
+      <div class="col-6">
+        <button class="btn btn-primary" (click)="getCall()">GET call</button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-primary" (click)="postCall()">POST call</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet />
