@@ -13,7 +13,6 @@ import com.api.requiredremainder.model.User;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
-@CrossOrigin
 public class UserControllerImpl implements UserController {
 
   @Override
