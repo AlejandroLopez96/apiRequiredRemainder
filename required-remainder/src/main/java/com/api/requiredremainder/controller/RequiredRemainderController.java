@@ -23,7 +23,7 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping(RequiredRemainderConstants.PATH_REQUIRED_REMAINDER_CONTROLLER)
 public interface RequiredRemainderController {
