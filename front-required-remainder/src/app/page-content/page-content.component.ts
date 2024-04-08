@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../service/api.service';
-import { RequiredRemainderBody } from '../model/RequiredRemainderBody';
+import { RequiredRemainderRequest } from '../model/RequiredRemainderRequest';
 import { FormsModule } from '@angular/forms';
 import { Utils } from '../utils/Utils';
+import { RequiredRemainderResponse } from '../model/RequiredRemainderResponse';
 
 @Component({
   selector: 'page-content',
@@ -25,8 +26,8 @@ export class PageContentComponent {
     this.solutionRequiredRemainder = "";
     if (this.validateFieldsNumber()) {
       this.apiService.getCall(this.xField, this.yField, this.nField).subscribe({
-        next: (response) => {
-          this.solutionRequiredRemainder = response + ' from get call';
+        next: (response: RequiredRemainderResponse) => {
+          this.solutionRequiredRemainder = response.result + ' from get call';
         }, 
         error: (error) => {
           this.errorList = error?.error?.errors;
@@ -39,14 +40,14 @@ export class PageContentComponent {
     this.errorList = [];
     this.solutionRequiredRemainder = "";
     if (this.validateFieldsNumber()) {
-      const requiredRemainderBody: RequiredRemainderBody = {
+      const requiredRemainderRequest: RequiredRemainderRequest = {
         x: this.xField,
         y: this.yField,
         n: this.nField
       };
-      this.apiService.postCall(requiredRemainderBody).subscribe({
-        next: (response) => {
-          this.solutionRequiredRemainder = response + ' from post call';
+      this.apiService.postCall(requiredRemainderRequest).subscribe({
+        next: (response: RequiredRemainderResponse) => {
+          this.solutionRequiredRemainder = response.result + ' from post call';
         }, 
         error: (error) => {
           this.errorList = error?.error?.errors;

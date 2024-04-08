@@ -6,7 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.requiredremainder.controller.RequiredRemainderController;
-import com.api.requiredremainder.model.RequiredRemainderBody;
+import com.api.requiredremainder.model.RequiredRemainderRequest;
+import com.api.requiredremainder.model.RequiredRemainderResponse;
 import com.api.requiredremainder.service.RequiredRemainderService;
 import com.api.requiredremainder.utils.Utils;
 
@@ -20,12 +21,12 @@ public class RequiredRemainderControllerImpl implements RequiredRemainderControl
     private RequiredRemainderService requiredRemainderService;
 
     @Override
-    public ResponseEntity<Integer> getRequiredRemainder(Integer x, Integer y, Integer n) {
+    public ResponseEntity<RequiredRemainderResponse> getRequiredRemainder(Integer x, Integer y, Integer n) {
         log.info("Start RequiredRemainderController.getRequiredRemainder with param x: {}, y: {} and n: {}", x, y, n);
-        Integer result = null;
+        RequiredRemainderResponse result = new RequiredRemainderResponse();
         
         try {
-            result = this.requiredRemainderService.calculate(x, y, n);
+            result.setResult(this.requiredRemainderService.calculate(x, y, n));
 		} catch (Exception e) {
             log.error("Error in RequiredRemainderController.getRequiredRemainder");
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -36,19 +37,19 @@ public class RequiredRemainderControllerImpl implements RequiredRemainderControl
     }
 
     @Override
-    public ResponseEntity<Integer> postRequiredRemainder(RequiredRemainderBody body) {
-        log.info("Start RequiredRemainderController.postRequiredRemainder with bodyParam: {}", Utils.jsonMe(body));
-        Integer result = null;
+    public ResponseEntity<RequiredRemainderResponse> postRequiredRemainder(RequiredRemainderRequest request) {
+        log.info("Start RequiredRemainderController.postRequiredRemainder with bodyParam: {}", Utils.jsonMe(request));
+        RequiredRemainderResponse result = new RequiredRemainderResponse();
         
         try {
-            result = this.requiredRemainderService.calculate(body.getX(), body.getY(), body.getN());
+            result.setResult(this.requiredRemainderService.calculate(request.getX(), request.getY(), request.getN()));
 		} catch (Exception e) {
             log.error("Error in RequiredRemainderController.postRequiredRemainder");
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
         log.info("Finish RequiredRemainderController.postRequiredRemainder");
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<RequiredRemainderResponse>(result, HttpStatus.OK);
     }
 
 }
