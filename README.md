@@ -1,4 +1,5 @@
-How to launch this app
+HOW TO LAUNCH THIS APP
+User to access -> admin/password
 
 BACKEND SIDE
   - Start SpringBoot app with profile local, it will start in port 8085
@@ -11,8 +12,16 @@ BACKEND SIDE
  
 
 FRONTEND SIDE
-  - Start project with ng serve in console, you should have something like this:
-    ![image](https://github.com/AlejandroLopez96/apiRequiredRemainder/assets/15210465/ee575322-4d84-469e-a05e-2fbc0da5f5ac)
+  - Start project with ng serve in console, you should have something like this at first because there is a simple authentication (admin/password):
+    ![image](https://github.com/AlejandroLopez96/requiredRemainderApp/assets/15210465/6ea31373-04b1-48e0-8ba7-2ca216400380)
+  - When the form is filled up, you will be redirected to:
+    ![image](https://github.com/AlejandroLopez96/requiredRemainderApp/assets/15210465/5208f206-2f30-4316-b669-a93f54d0aa7b)
+  - With response from backend:
+    ![image](https://github.com/AlejandroLopez96/requiredRemainderApp/assets/15210465/ceb1e2ea-18a8-4029-8629-a626d420f558)
+
+
+
+    
 
 
   
