@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.api.requiredremainder.model.User;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
+@Hidden
 @RestController
 @CrossOrigin
 public interface UserController {
