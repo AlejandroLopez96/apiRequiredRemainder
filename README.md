@@ -13,7 +13,7 @@ BACKEND SIDE
  
 
 FRONTEND SIDE
-  - Start project with ng serve in console, you should have something like this at first because there is a simple authentication(admin/password):
+  - Start project with ng serve in console, you should have something like this at first because there is a basic authentication(admin/password) added in SecurityConfig.java and loginComponent, AuthGuard and apiService:
     
     ![image](https://github.com/AlejandroLopez96/requiredRemainderApp/assets/15210465/eb051442-5078-4c51-903c-1b2586295e6e)
   - When the form is filled up, you will be redirected to:
